@@ -51,7 +51,9 @@
   }
 
   function getLanguage() {
+    // 프로그래머스 언어 드롭다운: .dropdown-language .btn
     const el =
+      document.querySelector('.dropdown-language .btn') ||
       document.querySelector('.select-box .selected') ||
       document.querySelector('[class*="language"] .selected') ||
       document.querySelector('select[name="language"] option:checked');

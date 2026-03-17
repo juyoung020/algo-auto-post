@@ -137,6 +137,7 @@ function normalizeLanguageDisplay(language) {
   const clean = language.replace(/\s*[/(（].*/, '').trim();
   const map = {
     'Python 3': 'Python',
+    'Python3': 'Python',
     'Python': 'Python',
     'PyPy3': 'Python',
     'PyPy': 'Python',
@@ -166,6 +167,7 @@ function normalizeLanguage(language) {
   const clean = language.replace(/\s*[/(（].*/, '').trim();
   const map = {
     'Python 3': 'python',
+    'Python3': 'python',
     'Python': 'python',
     'PyPy3': 'python',
     'PyPy': 'python',
