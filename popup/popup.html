@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      width: 320px;
+      background: #f8f9fa;
+      color: #212529;
+    }
+    .header {
+      background: #4e54c8;
+      color: white;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 15px; font-weight: 600; }
+    .status-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+    .status-dot.ok { background: #4caf50; }
+    .status-dot.warn { background: #ff9800; }
+    .section {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #868e96;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .config-status {
+      font-size: 13px;
+      color: #495057;
+    }
+    .config-status.missing { color: #e03131; }
+    .history-empty {
+      font-size: 13px;
+      color: #868e96;
+      text-align: center;
+      padding: 8px 0;
+    }
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #f1f3f5;
+    }
+    .history-item:last-child { border-bottom: none; }
+    .history-item .title {
+      font-size: 12px;
+      color: #212529;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+    .history-item .date {
+      font-size: 11px;
+      color: #adb5bd;
+      white-space: nowrap;
+    }
+    .badge {
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-weight: 600;
+      margin-right: 4px;
+      color: white;
+    }
+    .badge.boj { background: #3b82f6; }
+    .badge.pg { background: #ef4444; }
+    .footer {
+      padding: 10px 16px;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      background: white;
+      color: #495057;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button:hover { background: #f1f3f5; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Algo Auto Post</h1>
+    <div class="status-dot" id="statusDot"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">GitHub 연결 상태</div>
+    <div class="config-status" id="configStatus">확인 중...</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">최근 포스팅</div>
+    <div id="historyList">
+      <div class="history-empty">아직 포스팅한 문제가 없습니다.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button id="openOptions">⚙️ 설정 열기</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

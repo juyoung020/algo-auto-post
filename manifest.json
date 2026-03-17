@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Algo Auto Post",
+  "version": "1.0.0",
+  "description": "백준/프로그래머스 문제를 맞추면 자동으로 GitHub Jekyll 블로그에 포스팅합니다",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.acmicpc.net/*",
+    "https://programmers.co.kr/*",
+    "https://school.programmers.co.kr/*",
+    "https://api.github.com/*",
+    "https://solved.ac/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.acmicpc.net/problem/*"],
+      "js": ["content/boj_problem.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://www.acmicpc.net/submit/*",
+        "https://www.acmicpc.net/problem/*"
+      ],
+      "js": ["content/boj_submit.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://www.acmicpc.net/status*"],
+      "js": ["content/boj_status.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://school.programmers.co.kr/learn/courses/*/lessons/*",
+        "https://programmers.co.kr/learn/courses/*/lessons/*"
+      ],
+      "js": ["content/programmers.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Algo Auto Post",
+    "default_icon": { "128": "icons/icon128.png" }
+  },
+  "icons": { "128": "icons/icon128.png" },
+  "options_page": "options/options.html"
+}
